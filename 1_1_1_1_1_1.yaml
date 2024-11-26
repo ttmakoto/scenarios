@@ -4,9 +4,9 @@ OpenSCENARIO:
   FileHeader:
     revMajor: 1
     revMinor: 1
-    date: '2024-10-13T05:24:03.559Z'
+    date: '2024-11-26T07:19:32.362Z'
     description: ''
-    author: 'Makoto Teshirogi (last modified by: Makoto Teshirogi)'
+    author: Makoto Teshirogi
   ParameterDeclarations:
     ParameterDeclaration:
       - name: __ego_dimensions_length__
@@ -31,9 +31,9 @@ OpenSCENARIO:
     CatalogLocation: []
   RoadNetwork:
     LogicFile:
-      filepath: lanelet2_map_1_1.osm
+      filepath: lanelet2_map_1_40.osm
     SceneGraphFile:
-      filepath: lanelet2_map_1_1.pcd
+      filepath: lanelet2_map_1_40.pcd
     TrafficSignals:
       TrafficSignalController: []
   Entities:
@@ -88,13 +88,26 @@ OpenSCENARIO:
                     LanePosition:
                       roadId: ''
                       laneId: '120775'
-                      s: 2.0729
+                      s: 2.0556
                       offset: 0.0582
                       Orientation:
                         type: relative
                         h: 0
                         p: -0.0
                         r: 0
+              - RoutingAction:
+                  AcquirePositionAction:
+                    Position:
+                      LanePosition:
+                        roadId: ''
+                        laneId: '120775'
+                        s: 323.3711
+                        offset: 0.205
+                        Orientation:
+                          type: relative
+                          h: 0
+                          p: -0.0
+                          r: 0
               - RoutingAction:
                   FollowTrajectoryAction:
                     TrajectoryFollowingMode:
@@ -105,11 +118,11 @@ OpenSCENARIO:
                   SpeedAction:
                     SpeedActionDynamics:
                       dynamicsDimension: rate
-                      value: 3
+                      value: 0
                       dynamicsShape: linear
                     SpeedActionTarget:
                       AbsoluteTargetSpeed:
-                        value: 0
+                        value: 11.11
               - ControllerAction:
                   AssignControllerAction:
                     Controller:
@@ -132,6 +145,38 @@ OpenSCENARIO:
                 Maneuver:
                   - name: ''
                     Event:
+                      - name: ''
+                        priority: parallel
+                        StartTrigger:
+                          ConditionGroup:
+                            - Condition:
+                                - name: ''
+                                  delay: 0
+                                  conditionEdge: none
+                                  ByEntityCondition:
+                                    TriggeringEntities:
+                                      triggeringEntitiesRule: any
+                                      EntityRef:
+                                        - entityRef: ego
+                                    EntityCondition:
+                                      ReachPositionCondition:
+                                        Position:
+                                          LanePosition:
+                                            roadId: ''
+                                            laneId: '120775'
+                                            s: 323.3711
+                                            offset: 0.205
+                                            Orientation:
+                                              type: relative
+                                              h: 0
+                                              p: -0.0
+                                              r: 0
+                                        tolerance: 1
+                        Action:
+                          - name: ''
+                            UserDefinedAction:
+                              CustomCommandAction:
+                                type: exitSuccess
                       - name: ''
                         priority: parallel
                         StartTrigger:
