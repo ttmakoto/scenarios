@@ -31,9 +31,7 @@ OpenSCENARIO:
     CatalogLocation: []
   RoadNetwork:
     LogicFile:
-      filepath: lanelet2_map_1_40.osm
-    SceneGraphFile:
-      filepath: lanelet2_map_1_40.pcd
+      filepath: $(ros2 pkg prefix --share kashiwanoha_map)/map
     TrafficSignals:
       TrafficSignalController: []
   Entities:
@@ -108,29 +106,15 @@ OpenSCENARIO:
                           h: 0
                           p: -0.0
                           r: 0
-              - RoutingAction:
-                  FollowTrajectoryAction:
-                    TrajectoryFollowingMode:
-                      followingMode: position
-                    TimeReference:
-                      None: {}
               - LongitudinalAction:
                   SpeedAction:
                     SpeedActionDynamics:
                       dynamicsDimension: rate
                       value: 0
-                      dynamicsShape: linear
+                      dynamicsShape: step
                     SpeedActionTarget:
                       AbsoluteTargetSpeed:
-                        value: 11.11
-              - ControllerAction:
-                  AssignControllerAction:
-                    Controller:
-                      name: ''
-                      Properties:
-                        Property:
-                          - name: maxSpeed
-                            value: '11.11'
+                        value: 50
     Story:
       - name: ''
         Act:
