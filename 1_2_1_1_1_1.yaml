@@ -4,7 +4,7 @@ OpenSCENARIO:
   FileHeader:
     revMajor: 1
     revMinor: 1
-    date: '2024-12-08T09:00:49.157Z'
+    date: '2024-12-08T08:49:43.871Z'
     description: ''
     author: 'Makoto Teshirogi (last modified by: Makoto Teshirogi)'
   ParameterDeclarations:
@@ -31,7 +31,7 @@ OpenSCENARIO:
     CatalogLocation: []
   RoadNetwork:
     LogicFile:
-      filepath: $(ros2 pkg prefix --share kashiwanoha_map)/map
+      filepath: $(ros2 pkg prefix --share kashiwanoha_map)/maps
     TrafficSignals:
       TrafficSignalController: []
   Entities:
@@ -75,43 +75,6 @@ OpenSCENARIO:
               Property:
                 - name: isEgo
                   value: 'true'
-      - name: Npc1
-        Vehicle:
-          name: ''
-          vehicleCategory: car
-          BoundingBox:
-            Center:
-              x: 0
-              y: 0
-              z: 1.25
-            Dimensions:
-              length: 4
-              width: 1.8
-              height: 2.5
-          Performance:
-            maxSpeed: 50
-            maxAcceleration: INF
-            maxDeceleration: INF
-          Axles:
-            FrontAxle:
-              maxSteering: 0.5236
-              wheelDiameter: 0.6
-              trackWidth: 1.8
-              positionX: 2
-              positionZ: 0.3
-            RearAxle:
-              maxSteering: 0.5236
-              wheelDiameter: 0.6
-              trackWidth: 1.8
-              positionX: 0
-              positionZ: 0.3
-          Properties:
-            Property: []
-        ObjectController:
-          Controller:
-            name: ''
-            Properties:
-              Property: []
   Storyboard:
     Init:
       Actions:
@@ -151,59 +114,7 @@ OpenSCENARIO:
                       dynamicsShape: step
                     SpeedActionTarget:
                       AbsoluteTargetSpeed:
-                        value: 11.11
-              - ControllerAction:
-                  AssignControllerAction:
-                    Controller:
-                      name: ''
-                      Properties:
-                        Property:
-                          - name: maxSpeed
-                            value: '11.11'
-          - entityRef: Npc1
-            PrivateAction:
-              - TeleportAction:
-                  Position:
-                    LanePosition:
-                      roadId: ''
-                      laneId: '120789'
-                      s: 1.628
-                      offset: 0.0567
-                      Orientation:
-                        type: relative
-                        h: 0
-                        p: -0.0
-                        r: 0
-              - RoutingAction:
-                  AcquirePositionAction:
-                    Position:
-                      LanePosition:
-                        roadId: ''
-                        laneId: '120789'
-                        s: 324.912
-                        offset: 0.0665
-                        Orientation:
-                          type: relative
-                          h: 0
-                          p: -0.0
-                          r: 0
-              - LongitudinalAction:
-                  SpeedAction:
-                    SpeedActionDynamics:
-                      dynamicsDimension: time
-                      value: 0
-                      dynamicsShape: step
-                    SpeedActionTarget:
-                      AbsoluteTargetSpeed:
-                        value: 11.11
-              - ControllerAction:
-                  AssignControllerAction:
-                    Controller:
-                      name: ''
-                      Properties:
-                        Property:
-                          - name: maxSpeed
-                            value: '11.11'
+                        value: 13.88
     Story:
       - name: ''
         Act:
@@ -262,19 +173,6 @@ OpenSCENARIO:
                                     SimulationTimeCondition:
                                       value: 180
                                       rule: greaterThan
-                            - Condition:
-                                - name: ''
-                                  delay: 0
-                                  conditionEdge: none
-                                  ByEntityCondition:
-                                    TriggeringEntities:
-                                      triggeringEntitiesRule: any
-                                      EntityRef:
-                                        - entityRef: ego
-                                    EntityCondition:
-                                      CollisionCondition:
-                                        EntityRef:
-                                          entityRef: Npc1
                         Action:
                           - name: ''
                             UserDefinedAction:
